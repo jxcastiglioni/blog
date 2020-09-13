@@ -1,6 +1,7 @@
 import React from 'react';
 import Blog from './components/Blog';
 import Header from './components/Header';
+import Entry from './components/Entry'
 
 function App() {
   // const [title, setTitle] = useState('');
@@ -24,10 +25,19 @@ function App() {
     }
   ]
 
+  const funcArr = [
+    {
+      addBlog: () => console.log('added blog'),
+      newBlog: () => console.log('new blog created'),
+      handleBlogChange: () => console.log('performed some process for blog change')
+    }
+  ]
+
   return (
     <div>
       <Header siteTitle="Jacob's Blog Site" />
-      {info.map(art => <Blog article={art} />)}
+      <Entry funcArray={funcArr} />
+      {info.map(art => <Blog key={art.name} article={art} />)}
     </div>
   );
 }
