@@ -1,6 +1,7 @@
 //import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import React from "react"
+
 import {
     BrowserRouter as Router,
     Link,
@@ -8,14 +9,14 @@ import {
     Switch,
   } from 'react-router-dom'
 
-  
+ // import About from './About'
   
 
 const Header = ({ siteTitle }) => (
   <Router>
       <header
     style={{
-      background: `rebeccapurple`,
+      background: `#ecdb96`,
       marginBottom: `1.45rem`,
     }}
   >
@@ -30,15 +31,17 @@ const Header = ({ siteTitle }) => (
         <Link
           to="/"
           style={{
-            color: `white`,
+            color: `black`,
             textDecoration: `none`,
           }}
         >
           {siteTitle}
         </Link>
+        
       </h1>
       <Switch>
           <Route path='/' />
+         
       </Switch>
     </div>
   </header>
