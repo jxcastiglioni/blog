@@ -27,12 +27,15 @@ const Header = ({ siteTitle }) => (
         padding: `1.45rem 1.0875rem`,
       }}
     >
+    <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet'></link>
+    
       <h1 style={{ margin: 0 }}>
         <Link
           to="/"
           style={{
             color: `black`,
             textDecoration: `none`,
+            fontFamily: 'Raleway'
           }}
         >
           {siteTitle}

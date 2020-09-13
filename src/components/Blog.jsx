@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Blog = ({ title, body, author }) => (
+const Blog = ({ article }) => (
  
     <div
     style={{
@@ -10,21 +10,19 @@ const Blog = ({ title, body, author }) => (
         padding: `1.45rem 1.0875rem`,
       }}>
            <article>
-    <h2>{title}</h2>
-    <h6>{author}</h6>
+    <h2>{article.title}</h2>
+    <h6>{article.author}</h6>
    
     <p style={{
         textAlign:'justify'
     }}>
-        {body}</p>
+        {article.body}</p>
   </article>
    </div>
 );
 
 Blog.propTypes = {
-  title: PropTypes.string.isRequired,
-  author: PropTypes.string.isRequired,
-  body: PropTypes.string.isRequired,
+  article: PropTypes.arrayOf(PropTypes.string.isRequired)
 };
 
 export default Blog;
