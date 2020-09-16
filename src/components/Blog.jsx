@@ -22,7 +22,8 @@ const Blog = ({ article }) => (
 );
 
 Blog.propTypes = {
-  article: PropTypes.arrayOf(PropTypes.string.isRequired)
+  // article: PropTypes.objectOf(PropTypes.string.isRequired)
+  article: PropTypes.object
 };
 
 export default Blog;
