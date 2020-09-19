@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Blog = ({ article }) => (
- 
+  
     <div
     style={{
         margin: `0 auto`,

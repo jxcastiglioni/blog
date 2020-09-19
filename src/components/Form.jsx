@@ -1,11 +1,24 @@
-import React, {useState} from 'react'
-// import info from '../data'
+import React, {useState, useEffect} from 'react'
+import blogService from '../services/blogs'
+//import info from '../data'
 
-const Entry = () => {
+const Form = () => {
 
     const [title, setTitle] = useState('')
     const [author, setAuthor] = useState('')
     const [article, setArticle] = useState('')
+    const [blogs, setBlogs] = useState([])
+
+
+    const hook = () => {
+        blogService
+            .getAll()
+            .then(initialBlog => {
+                setBlogs(initialBlog)
+            })
+    }
+
+    useEffect(hook, [])
 
    const handleTitleChange = (event) => {
        console.log(event.target.value);
@@ -22,20 +35,30 @@ const Entry = () => {
         setArticle(event.target.value)
     }
 
-    const handleSubmit = (event) => {
-        event.preventDefault()
-        console.log('submit button pressed');
-    }
-
-    // const addBlog = (event) => {
+    // const handleSubmit = (event) => {
     //     event.preventDefault()
-    //     const blogObj = {
-    //         id: 3,
-    //         author: author,
-    //         title: title,
-    //         article: article
-    //     }
+    //     console.log('submit button pressed');
     // }
+
+    const addBlog = (event) => {
+        event.preventDefault()
+        const blogObj = {
+            id: 5,
+            title: title,
+            author: author,
+            body: article
+        }
+        console.log('blog obj created')
+
+        blogService
+            .create(blogObj)
+            .then(returnedBlog => {
+                setBlogs(blogs.concat(returnedBlog))
+                setArticle('')
+                setTitle('')
+                setAuthor('')
+            })  
+        }
 
     return (
         <div  
@@ -44,7 +67,7 @@ const Entry = () => {
             maxWidth: 960,
             padding: `1.45rem 1.0875rem`
             }}>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={addBlog}>
                 <div 
                 style={{
                     display: 'flex',
@@ -72,4 +95,4 @@ const Entry = () => {
     )
 }
 
-export default Entry
+export default Form
