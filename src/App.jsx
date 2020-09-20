@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import Blog from './components/Blog';
 import Header from './components/Header';
-//import Form from './components/Form'
 import blogService from './services/blogs'
 
 
@@ -95,12 +94,7 @@ const addBlog = (event) => {
                 }}>Submit</button>
             </form>
         </div>
-        <div
-        style={{
-          flexDirection: 'column-reverse'
-        }}>
       {blogs.map(art => <Blog key={art.id} article={art} />)}
-      </div>
     </div>
   );
 }
