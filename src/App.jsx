@@ -40,13 +40,26 @@ function App() {
     setBody(event.target.value)
     }
 
+    const addLike = (id) => {
+        const blog = blogs.find(b => b.id === id)
+        console.log("blog was found", blog);
+        const changedBlog = {...blog, likes: blog.likes + 1}
+        console.log(changedBlog);
+        blogService.update(id, changedBlog)
+                   .then (returnedBlog => {
+                       setBlogs(blogs.map(blog => blog.id !== id ? blog : returnedBlog))
+                   })
+        //setBlogs(hook)
+    }
+
     const addBlog = (event) => {
     event.preventDefault()
     const blogObj = {
         id: blogs.length + 1,
         title: title,
         author: author,
-        body: body
+        body: body,
+        likes: 0
     }
     console.log('blog obj created')
 
@@ -57,7 +70,9 @@ function App() {
             setBody('')
             setTitle('')
             setAuthor('')
-        })  
+        })
+        
+        
     }
 
     return (
@@ -94,7 +109,7 @@ function App() {
                         }}>Submit</button>
                     </form>
             </div>
-            {blogs.map(art => <Blog key={art.id} article={art} />)}
+            {blogs.map(art => <Blog key={art.id} article={art} func={() => addLike(art.id)} />)}
         </div>
     );
     }
