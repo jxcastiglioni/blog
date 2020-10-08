@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Blog = ({ article }) => (
+const Blog = ({ article, func }) => (
   
     <div
     style={{
@@ -18,6 +18,7 @@ const Blog = ({ article }) => (
     }}>
         {article.body}</p>
   </article>
+  <button onClick={func} style={{float: "right"}}>Like <span role="img" aria-label="heart">❤️</span></button>
    </div>
 );
 
